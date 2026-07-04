@@ -1,0 +1,23 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+
+# Secrets
+*.pem
+*.key
+.ssh/
+
+# Python
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+
+# Jupyter
+output/
+source-data/
+
+# OS
+.DS_Store

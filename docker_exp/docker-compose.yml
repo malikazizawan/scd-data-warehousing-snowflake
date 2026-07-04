@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  nifi:
+    image: apache/nifi:1.14.0
+    container_name: nifi
+    ports:
+      - "8443:8443"
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=admin
+      - SINGLE_USER_CREDENTIALS_PASSWORD=ChangeThisPassword123!
+    volumes:
+      - ./nifi-data:/opt/nifi/nifi-current/data
+      - ./source-data:/opt/nifi/source-data
+    restart: unless-stopped
+
+  jupyterlab:
+    image: jupyter/scipy-notebook:latest
+    container_name: jupyterlab
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_TOKEN=ChangeThisToken123
+    volumes:
+      - ./source-data:/home/jovyan/work
+    restart: unless-stopped
